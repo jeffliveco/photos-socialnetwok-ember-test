@@ -8,32 +8,36 @@ export default Ember.Controller.extend({
 	isEmailText: Ember.computed.empty('email'),
 	isPasswordText: Ember.computed.empty('password'),
 
+	showErrorMessage: Ember.computed.notEmpty('responseErrorMessage'),
+    showSuccessMessage: Ember.computed.notEmpty('responseSuccessMessage'),
+
 	actions:{
+		OnCloseMessage(){
+			this.set('responseErrorMessage', '');
+			this.set('responseSuccessMessage', '');
+		},
 		OnSignin() {
-			let completeForm = true;
 
 			if(this.get("isEmailText")){
 				this.set('responseErrorMessage', `Validation! Field 'email' is required.`);
-				completeForm = false;
+				return;
 			}
 
 			if(this.get("isPasswordText")){
 				this.set('responseErrorMessage', `Validation! Field 'password' is required.`);
-				completeForm = false;
+				return;
 			}
 
-			if(completeForm){
-				this.set('responseSuccessMessage', `Transaction! Is login.`);
+			
+			this.set('responseSuccessMessage', `Transaction! Is login.`);
 
-				this.get('session').open('firebase', {
-					provider: 'password',
-					email: this.get("email"),
-					password: this.get("password")
-				}).then(function(data) {
-					this.transitionTo('index');
-        			console.log(data.currentUser);
-     			});
-			}
+			this.get('session').open('firebase', {
+				provider: 'password',
+				email: this.get("email"),
+				password: this.get("password")
+			}).then(function(data) {
+				this.transitionTo('index');
+ 			});
 		}
 	}
 });
