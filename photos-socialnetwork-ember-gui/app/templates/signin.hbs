@@ -1,0 +1,39 @@
+<div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <h2 style="text-align: center;">Sign in</h2>  
+        <div class="form-group">
+            <label class="control-label">Email</label>
+            {{bs-input type="text" value=email placeholder="yourname@correo.com"}}
+        </div>
+        <div class="form-group">
+            <label class="control-label">Password</label>
+            {{bs-input type="password" value=password placeholder="Secret text"}}
+        </div>
+        <div class="form-group">
+            {{#bs-button class="btn btn-primary btn-lg btn-block" type="button" action="OnSignin" }}
+                Sign in
+            {{/bs-button}}
+        </div>
+        <h4 style="text-align: center;">or</h4>
+        <div class="col-md-6">
+            {{#bs-button class="btn btn-primary btn-lg btn-block" icon="fa fa-facebook" type="button" }}
+                Facebook
+            {{/bs-button}}
+
+            {{#bs-button class="btn btn-info btn-lg btn-block" icon="fa fa-twitter" type="button" }}
+                Twitter
+            {{/bs-button}}
+        </div>
+        <div class="col-md-6">
+            {{#bs-button class="btn btn-danger btn-lg btn-block" icon="fa fa-google-plus" type="button" }}
+                Google
+            {{/bs-button}}
+
+            {{#bs-button class="btn btn-warning btn-lg btn-block" icon="fa fa-github" type="button" }}
+                Github
+            {{/bs-button}}
+        </div>
+    </div>
+    <div class="col-md-4"></div>
+</div>

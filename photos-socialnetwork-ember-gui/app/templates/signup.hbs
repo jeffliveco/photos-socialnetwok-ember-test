@@ -1,0 +1,68 @@
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Sign up</h3>
+            </div>
+            <div class="panel-body">
+                <div class="row form-space">
+                    <div class="col-md-12">
+                        {{#bs-alert}}
+                            <strong>{{message.title}}</strong> {{message.content}}
+                        {{/bs-alert}}
+                    </div>
+                </div>
+                <div class="row form-space">
+                    <div class="col-md-6">
+                        <label class="control-label">Name</label>
+                        {{bs-input type="text" value=name placeholder="Your name"}}
+                    </div>
+                    <div class="col-md-6">
+                        <label class="control-label">Last name</label>
+                        {{bs-input type="text" value=lastname placeholder="Your last name"}}
+                    </div>
+                </div>
+                <div class="row form-space">
+                    <div class="col-md-12">
+                        <label class="control-label">Email</label>
+                        {{bs-input type="text" value=email placeholder="yourname@correo.com"}}
+                    </div>
+                </div>
+                <div class="row form-space">
+                     <div class="col-md-4">
+                        <label class="control-label">Birthday</label>
+                        {{date-picker date=birthday class="form-control" valueFormat='YYYY-MM-DD'}}
+                    </div>
+
+                     <div class="col-md-8">
+                        <label class="control-label">Gender</label>
+                        {{#select-box/native value=gender class-prefix='form-control' as |sb|}}
+                          {{sb.option value=0 label='Select one....'}}
+                          {{sb.option value=1 label='Female'}}
+                          {{sb.option value=2 label='Male'}}
+                        {{/select-box/native}}
+                    </div>
+                </div>
+                <div class="row form-space">
+                     <div class="col-md-6">
+                        <label class="control-label">Password</label>
+                        {{bs-input type="password" value=password placeholder="Secret text"}}
+                    </div>
+                     <div class="col-md-6">
+                        <label class="control-label">Confirm password</label>
+                        {{bs-input type="password2" value=confirmPassword placeholder="Confirm secret text"}}
+                    </div>
+                </div>
+                <div class="row form-space">
+                    <div class="col-md-12">
+                        {{#bs-button class="btn btn-primary btn-lg btn-block" type="button" action="OnSignup" }}
+                            Sign up
+                        {{/bs-button}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3"></div>
+</div>
