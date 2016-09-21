@@ -1,0 +1,12 @@
+{
+  "hosting": {
+  	"firebase": "photos-socialNetwork",
+    "public": "dist",
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}
