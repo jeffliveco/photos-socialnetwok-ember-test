@@ -88,9 +88,10 @@ export default Ember.Controller.extend({
 				return;
 			}
 
-			const auth = this.get('firebaseApp').auth();
+			let controller = this;
+			let auth = this.get('firebaseApp').auth();
 			auth.createUserWithEmailAndPassword(this.get('email'), this.get('password')).then((userResponse) => {
-		    	const user = this.store.createRecord('account', {
+		    	let account = this.store.createRecord('account', {
 		        	uid: userResponse.uid,
 		        	name: this.get('name'),
 		        	lastname: this.get('lastname'),
@@ -99,9 +100,9 @@ export default Ember.Controller.extend({
 		        	gender: this.get('gender')
 		      	});
 
-		      	user.save().then((response) => {
-		      		this.set('responseSuccessMessage', `Thank you! We saved your account.`);
-			        this.transitionTo('signin');
+		      	account.save().then((response) => {
+		      		//this.set('responseSuccessMessage', `Thank you! We saved your account.`);
+			    	controller.transitionToRoute('dashboard');
 			    });
 		    });
 

@@ -6,5 +6,6 @@ export default DS.Model.extend({
   lastname: DS.attr('string'),
   email: DS.attr('string'),
   birthday: DS.attr('date'),
-  gender: DS.attr('string')
+  gender: DS.attr('string'),
+  photos: DS.hasMany('photo')
 });

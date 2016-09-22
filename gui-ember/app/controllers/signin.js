@@ -17,6 +17,7 @@ export default Ember.Controller.extend({
 			this.set('responseSuccessMessage', '');
 		},
 		OnSignin() {
+			let controller = this;
 
 			if(this.get("isEmailText")){
 				this.set('responseErrorMessage', `Validation! Field 'email' is required.`);
@@ -27,7 +28,6 @@ export default Ember.Controller.extend({
 				this.set('responseErrorMessage', `Validation! Field 'password' is required.`);
 				return;
 			}
-
 			
 			this.set('responseSuccessMessage', `Transaction! Is login.`);
 
@@ -35,9 +35,23 @@ export default Ember.Controller.extend({
 				provider: 'password',
 				email: this.get("email"),
 				password: this.get("password")
-			}).then(function(data) {
-				this.transitionTo('index');
- 			});
+			}).then(() => {
+		        controller.transitionToRoute('dashboard');
+		    }, (error) => {
+		    	switch (error.code) {
+                    case "EMAIL_TAKEN":
+                        console.log('user already exists');
+                    break;
+                    case "INVALID_EMAIL":
+                        console.log('your email looks wrong');
+                    break;
+                    case "INVALID_PASSWORD":
+                        console.log('your password looks incorrect');
+                    break;
+                    default:
+                        console.log(error.message);
+	            }
+		    });
 		}
 	}
 });
