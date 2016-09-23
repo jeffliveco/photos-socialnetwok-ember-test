@@ -48,12 +48,12 @@
         <div class="row">
 	        <h4 style="text-align: center;">or</h4>
 	        <div class="col-md-6">
-	        	<button class="btn btn-primary btn-lg btn-block">{{fa-icon "facebook"}} Facebook</button>
-	        	<button class="btn btn-info btn-lg btn-block">{{fa-icon "twitter"}} Twitter</button>
+	        	<button class="btn btn-primary btn-lg btn-block" {{action 'OnSigninSocial' 'facebook'}}>{{fa-icon "facebook"}} Facebook</button>
+	        	<button class="btn btn-info btn-lg btn-block" {{action 'OnSigninSocial' 'twitter'}}>{{fa-icon "twitter"}} Twitter</button>
 	        </div>
 	        <div class="col-md-6">
-	        	<button class="btn btn-danger btn-lg btn-block">{{fa-icon "google-plus"}} Google</button>
-	        	<button class="btn btn-warning btn-lg btn-block">{{fa-icon "github"}} Github</button>
+	        	<button class="btn btn-danger btn-lg btn-block" {{action 'OnSigninSocial' 'google'}}>{{fa-icon "google-plus"}} Google</button>
+	        	<button class="btn btn-warning btn-lg btn-block" {{action 'OnSigninSocial' 'github'}}>{{fa-icon "github"}} Github</button>
 	        </div>
 	    </div>
     </div>
