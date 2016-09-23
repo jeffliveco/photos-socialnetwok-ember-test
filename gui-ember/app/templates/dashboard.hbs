@@ -1,26 +1,14 @@
-<h1>Dashboard</h1>
-<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#addPhotoModal">Add Photo</button>
-<section>
-{{#each photo in model}}
-  <img src="{{photo.path}}" alt="" class="img-responsive img-rounded">
-{{/each}}
-</section>
+<div class="row">
+	<div class="col-md-10"><h1>Dashboard</h1></div>
+	<div class="col-md-2"><button class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#addPhotoModal">Add Photo</button></div>
+</div>
+<div class="row">
+	<div class="col-md-12" class="gallery-photos">
+	{{#each model as |photo|}}
+		<div class={{photo.style}} style="float:left; width:33.2%;"><img id={{photo.uid}} src={{photo.path}} class="img-responsive"></div>
+	{{/each}}
+	</div>
+</div>
 
 <!-- Modal -->
-<div class="modal fade" id="addPhotoModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-	<div class="modal-dialog modal-lg" role="document">
-    	<div class="modal-content">
-      		<div class="modal-header">
-        		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        		<h4 class="modal-title" id="myModalLabel">Add photo</h4>
-      		</div>
-      		<div class="modal-body">
-    			{{webcam-capture snap="savePhoto"}}
-      		</div>
-      		<div class="modal-footer">
-        		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        		<button type="button" class="btn btn-primary">Save changes</button>
-      		</div>
-    	</div>
-  	</div>
-</div>
+{{webcam-capture target="addPhotoModal" snap="savePhoto"}}

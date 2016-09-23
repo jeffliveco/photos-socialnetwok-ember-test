@@ -8,10 +8,5 @@ export default Ember.Route.extend({
   	},
   	model: function() {
     	return this.store.findAll('photo');
-  	},
-  	actions: {
-    	savePhoto: function(photo){
-      		console.log(photo);
-    	}
   	}
 });

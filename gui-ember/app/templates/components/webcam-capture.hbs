@@ -1,50 +1,70 @@
-<div class="row">
-    <div class="col-md-6">
-    	<div class="col-md-12">
-    		<div class="layer-selector">
-				<video id="videoLayer" class="video-selector" autoplay></video>
-				<canvas id="canvasLayer" width="400" height="300" style="display:none;"></canvas>
+<div class="modal fade" id={{target}} tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog modal-lg" role="document">
+    	<div class="modal-content">
+      		<div class="modal-header">
+        		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        		<h4 class="modal-title" id="myModalLabel">Add photo</h4>
+      		</div>
+      		<div class="modal-body">
+				<div class="row">
+				    <div class="col-md-6">
+				    	<div class="col-md-12">
+				    		<div class="layer-selector">
+								<video id="videoLayer" class="video-selector" autoplay></video>
+								<canvas id="canvasLayer" width="400" height="300" style="display:none;"></canvas>
 
-				<div id="btnCapture" {{action 'snap'}}>{{fa-icon "camera" size=3}}</div>
-				<div id="btnConfirmation">
-					<button type="button" class="btn btn-success" {{action 'onSelect'}}>Select</button>
-					<button type="button" class="btn btn-danger" {{action 'onCancel'}}>Cancel</button>
+								<div id="btnCapture" {{action 'snap'}}>{{fa-icon "camera" size=3}}</div>
+								<div id="btnConfirmation">
+									<button type="button" class="btn btn-success" {{action 'onSelect'}}>Select</button>
+									<button type="button" class="btn btn-danger" {{action 'onCancel'}}>Cancel</button>
+								</div>
+								<div id="btnSelectFinalPhoto">
+									<button type="button" class="btn btn-info" {{action 'onConfirm'}}>Confirm Photo</button>
+									<button type="button" class="btn btn-danger" {{action 'onCancel'}}>Cancel</button>
+								</div>
+							</div>
+				    	</div>
+				    	<div class="col-md-12">
+					    	<div class="list-upload-photos">
+					    		<div class="photo-selected" id="photo-0" {{action 'onSelectPhoto' '0'}}><img src="https://dummyimage.com/90/000/fff" width="150" alt="" class="img-responsive img-rounded selected-photo" /></div>
+					    		<div class="photo-selected" id="photo-1" {{action 'onSelectPhoto' '1'}}><img src="https://dummyimage.com/90/000/fff" width="150" alt="" class="img-responsive img-rounded selected-photo" /></div>
+					    		<div class="photo-selected" id="photo-2" {{action 'onSelectPhoto' '2'}}><img src="https://dummyimage.com/90/000/fff" width="150" alt="" class="img-responsive img-rounded selected-photo" /></div>
+					    		<div class="photo-selected" id="photo-3" {{action 'onSelectPhoto' '3'}}><img src="https://dummyimage.com/90/000/fff" width="150" alt="" class="img-responsive img-rounded selected-photo" /></div>
+					    	</div>
+					    </div>
+				    </div>
+				    <div class="col-md-6">
+				    	 <div class="col-md-6 filter-selector" {{action 'onEffectSelected' 'original'}}>
+				    	 	<img src="https://dummyimage.com/160x120/000/fff" alt="Original" width="160" class="img-responsive img-rounded effect-photo">
+				    	 	<span>Original</span>
+				    	 </div>
+				    	 <div class="col-md-6 filter-selector ig-hudson" {{action 'onEffectSelected' 'hudson'}}>
+				    	 	<img src="https://dummyimage.com/160x120/000/fff" alt="Hudson" width="160" class="img-responsive img-rounded effect-photo">
+				    	 	<span>Hudson</span>
+				    	 </div>
+				    	 <div class="col-md-6 filter-selector ig-lofi" {{action 'onEffectSelected' 'lofi'}}>
+				    	 	<img src="https://dummyimage.com/160x120/000/fff" alt="Lofi" width="160" class="img-responsive img-rounded effect-photo">
+				    	 	<span>Lofi</span>
+				    	 </div>
+				    	 <div class="col-md-6 filter-selector ig-nashville" {{action 'onEffectSelected' 'nashville'}}>
+				    	 	<img src="https://dummyimage.com/160x120/000/fff" alt="Nashville" width="160" class="img-responsive img-rounded effect-photo">
+				    	 	<span>Nashville</span>
+				    	 </div>
+				    	 <div class="col-md-6 filter-selector ig-sierra" {{action 'onEffectSelected' 'sierra'}}>
+				    	 	<img src="https://dummyimage.com/160x120/000/fff" alt="Sierra" width="160" class="img-responsive img-rounded effect-photo">
+				    	 	<span>Sierra</span>
+				    	 </div>
+				    	 <div class="col-md-6 filter-selector ig-toaster" {{action 'onEffectSelected' 'toaster'}}>
+				    	 	<img src="https://dummyimage.com/160x120/000/fff" alt="Toaster" width="160" class="img-responsive img-rounded effect-photo">
+				    	 	<span>Toaster</span>
+				    	 </div>
+				    </div>
 				</div>
 			</div>
+      		<div class="modal-footer">
+        		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        		<button type="button" class="btn btn-primary">Save changes</button>
+      		</div>
     	</div>
-    	<div class="col-md-12">
-	    	<div class="list-upload-photos">
-	    		<div class="photo-selected" {{action 'onSelectPhoto' '0'}}><img src="https://dummyimage.com/90/000/fff" width="150" alt="" class="img-responsive img-rounded selected-photo" /></div>
-	    		<div class="photo-selected" {{action 'onSelectPhoto' '1'}}><img src="https://dummyimage.com/90/000/fff" width="150" alt="" class="img-responsive img-rounded selected-photo" /></div>
-	    		<div class="photo-selected" {{action 'onSelectPhoto' '2'}}><img src="https://dummyimage.com/90/000/fff" width="150" alt="" class="img-responsive img-rounded selected-photo" /></div>
-	    		<div class="photo-selected" {{action 'onSelectPhoto' '3'}}><img src="https://dummyimage.com/90/000/fff" width="150" alt="" class="img-responsive img-rounded selected-photo" /></div>
-	    	</div>
-	    </div>
-    </div>
-    <div class="col-md-6">
-    	 <div class="col-md-6 filter-selector" {{action 'onEffectSelected' 'original'}}>
-    	 	<img src="https://dummyimage.com/160x120/000/fff" alt="Original" width="160" class="img-responsive img-rounded effect-photo">
-    	 	<span>Original</span>
-    	 </div>
-    	 <div class="col-md-6 filter-selector ig-hudson" {{action 'onEffectSelected' 'hudson'}}>
-    	 	<img src="https://dummyimage.com/160x120/000/fff" alt="Hudson" width="160" class="img-responsive img-rounded effect-photo">
-    	 	<span>Hudson</span>
-    	 </div>
-    	 <div class="col-md-6 filter-selector ig-lofi" {{action 'onEffectSelected' 'lofi'}}>
-    	 	<img src="https://dummyimage.com/160x120/000/fff" alt="Lofi" width="160" class="img-responsive img-rounded effect-photo">
-    	 	<span>Lofi</span>
-    	 </div>
-    	 <div class="col-md-6 filter-selector ig-nashville" {{action 'onEffectSelected' 'nashville'}}>
-    	 	<img src="https://dummyimage.com/160x120/000/fff" alt="Nashville" width="160" class="img-responsive img-rounded effect-photo">
-    	 	<span>Nashville</span>
-    	 </div>
-    	 <div class="col-md-6 filter-selector ig-sierra" {{action 'onEffectSelected' 'sierra'}}>
-    	 	<img src="https://dummyimage.com/160x120/000/fff" alt="Sierra" width="160" class="img-responsive img-rounded effect-photo">
-    	 	<span>Sierra</span>
-    	 </div>
-    	 <div class="col-md-6 filter-selector ig-toaster" {{action 'onEffectSelected' 'toaster'}}>
-    	 	<img src="https://dummyimage.com/160x120/000/fff" alt="Toaster" width="160" class="img-responsive img-rounded effect-photo">
-    	 	<span>Toaster</span>
-    	 </div>
-    </div>
+  	</div>
 </div>
