@@ -1,0 +1,14 @@
+<div class="row">
+	<div class="col-md-10"><h1>Dashboard</h1></div>
+	<div class="col-md-2"><button class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#addPhotoModal">Add Photo</button></div>
+</div>
+<div class="row">
+	<div class="col-md-12" class="gallery-photos">
+	{{#each model as |photo|}}
+		<div class={{photo.style}} style="float:left; width:33.2%;"><img id={{photo.uid}} src={{photo.path}} class="img-responsive"></div>
+	{{/each}}
+	</div>
+</div>
+
+<!-- Modal -->
+{{webcam-capture target="addPhotoModal" snap="savePhoto"}}
