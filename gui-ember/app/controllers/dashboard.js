@@ -6,8 +6,6 @@ export default Ember.Controller.extend({
 
   	actions: {
     	savePhoto: function(photo, effect){
-    		console.log(photo);
-
     		const storageRef = this.get('firebaseApp').storage().ref();
 
       		let userUID = this.get('session.currentUser.uid');
@@ -47,6 +45,20 @@ export default Ember.Controller.extend({
 		      	});
 
 		      	photo.save();
+
+		 
+
+		      	if (!("Notification" in window)) {
+	    			alert("This browser does not support desktop notification");
+				} else if (Notification.permission === "granted") {
+					var notification = new Notification("Photo Added");
+				} else if (Notification.permission !== 'denied') {
+				    Notification.requestPermission(function (permission) {
+				    	if (permission === "granted") {
+				        	var notification = new Notification("Photo Added");
+				      	}
+				    });
+				}
 		    });
     	}
   	}

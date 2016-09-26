@@ -38,19 +38,17 @@ export default Ember.Controller.extend({
 			}).then(() => {
 		        controller.transitionToRoute('dashboard');
 		    }, (error) => {
-		    	switch (error.code) {
-                    case "EMAIL_TAKEN":
-                        console.log('user already exists');
-                    break;
-                    case "INVALID_EMAIL":
-                        console.log('your email looks wrong');
-                    break;
-                    case "INVALID_PASSWORD":
-                        console.log('your password looks incorrect');
-                    break;
-                    default:
-                        console.log(error.message);
-	            }
+		    	this.set('responseErrorMessage', error.message);
+		    });
+		},
+		OnSigninSocial(provider){
+			let controller = this;
+			this.get('session').open('firebase', {
+				provider: provider
+			}).then((result) => {
+				controller.transitionToRoute('dashboard');
+		    }, (error) => {
+		    	this.set('responseErrorMessage', error.message);
 		    });
 		}
 	}
